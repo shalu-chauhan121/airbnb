@@ -1,5 +1,6 @@
 #tasks to be done in future
-# i have to change the styling of reviews 
+
+#styling of review card
 #there is error while creating the new listing 
 #geocoding is pending 
 #deployment is also pending
