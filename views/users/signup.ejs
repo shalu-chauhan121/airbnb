@@ -1,0 +1,61 @@
+<%layout("/layouts/boilerplate.ejs")%>
+<body>
+  
+<div class="row mt-3">
+    <div class="col-6  offset-2">
+        <h4>Sign up for Wanderlust</h4>
+   <form action="/user/signUp" method="Post" novalidate class="needs-validation">
+  
+
+    <div class="mb-3">
+        <label for="username" class="form-label">username</label>
+        <input id="username" name="username" type="text" class="form-control" required>
+        <div class="valid-feedback">username available</div>
+        <div class="invalid-feedback">Please enter a valid username</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">email</label>
+        <input id="email" name="email" type="email" class="form-control" required>
+        <div class="valid-feedback">valid email</div>
+        <div class="invalid-feedback">Please enter a valid email</div>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="password" class="form-label">password</label>
+        <input id="password" name="password" type="password" class="form-control" required>
+        <div class="valid-feedback">password looks good</div>
+        <div class="invalid-feedback">Please enter a valid password</div>
+    </div>
+
+    <button class="btn btn-success">signUp</button>
+    
+   </form>
+    </div>
+</div>
+
+
+<script>
+    (() => {
+      'use strict';
+    //  alert("Validation JS loaded ✅");  // 🔍 Easy visual confirmation
+    
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+        //  alert("Form submit triggered"); // 🧪
+    
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          //  alert("Form is invalid ❌");
+          }
+    
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+    </script>
+
+</body>

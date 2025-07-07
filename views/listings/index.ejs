@@ -1,0 +1,178 @@
+
+<%layout("/layouts/boilerplate.ejs")%>
+<style>
+  #filters{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+ #filter{
+  margin-top:1rem;
+  margin-right:3rem;
+  text-align:center;
+  opacity:0.7;
+ }
+ #filter p{
+   margin-top:0.5rem;
+   font-size:0.7rem;
+ }
+ #filter:hover{
+  opacity:1;
+  cursor:pointer;
+ }
+ .tax-info{
+  display:none;
+ }
+ .tax-toggle{
+  border:0.5px solid black;
+  height:3rem;
+  padding:0.7rem;
+  border-radius:1rem;
+  display:flex;
+  opacity: 0.7;
+ }
+ .tax-toggle:hover{
+  height: 3.1rem;
+
+ }
+</style>
+<body>
+    <!-- <h3>All details are mentioned here</h3> -->
+
+<div id="filters">
+
+ <div id="filter">
+  <div class="icons  ">
+    <i class="fa-solid fa-fire"></i>
+ </div>
+ <p>Trending</p>
+  </div>
+  
+  <div id="filter">
+    <div>
+      <i class="fa-solid fa-bed"></i>
+   </div>
+   <p>Rooms</p>
+    </div>
+    
+    
+ <div id="filter">
+  <div class="icons  ">
+    <i class="fa-solid fa-mountain-city"></i>
+ </div>
+ <p>Iconic-city</p>
+  </div>
+  
+  <div id="filter">
+    <div>
+      <i class="fa-solid fa-mountain"></i>
+   </div>
+   <p>Mountains</p>
+    </div>
+    
+    <div id="filter">
+      <div class="icons  ">
+        <i class="fa-solid fa-chess-rook"></i>
+     </div>
+     <p>Castles</p>
+      </div>
+      
+      <div id="filter">
+        <div>
+          <i class="fa-solid fa-person-swimming"></i>
+       </div>
+       <p>Amazing pools</p>
+        </div>
+
+        <div id="filter">
+          <div class="icons  ">
+            <i class="fa-solid fa-tent"></i>
+         </div>
+         <p>Camping</p>
+          </div>
+          
+          <div id="filter">
+            <div>
+              <i class="fa-solid fa-cow"></i>
+           </div>
+           <p>Farms</p>
+            </div>
+
+            <div id="filter">
+              <div class="icons  ">
+                <i class="fa-solid fa-ship"></i>
+             </div>
+             <p>Boats</p>
+              </div>
+              
+         
+
+                 <div class="tax-toggle">
+            <div id="toggleswitch" class="form-check form-switch form-check-reverse">
+              <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+              <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+            </div>
+          </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-3">
+        <%for(let listing of listings){%>
+
+            <a href="/listings/<%=listing._id%>" class="listing-links">
+            <div class="card col listing-card" style=>
+                <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height:18rem">
+                <div class="card-body">
+                  <h5 class="card-title"></h5>
+                  <p class="card-text">
+                    <div class="card-img-overlay">
+                       
+                    </div>
+                   <b> <%=listing.title%></b><br>
+                    <%=listing.price ? listing.price.toLocaleString("en-IN"):"N/A"%>/night
+                  <i class="tax-info"> &nbsp: &nbsp;+18% GST</i>
+                  </p>
+                  <!-- <a href="/listings/<%=listing._id%>" class="btn btn-primary">show details</a> -->
+                </div>
+              </div>
+            </a>
+
+
+
+
+              <%}%>
+    </div> 
+    <div style="height: 100px;"></div>
+   
+    <!-- <ul>
+       
+    </ul> -->
+    <!-- <form method="get" action="/listings/new">
+        <button>Add new</button>
+    </form> -->
+
+</body>
+
+<script>
+  let taxSwitch=document.getElementById("switchCheckDefault");
+  taxSwitch.addEventListener("click",()=>{
+    let taxInfo=document.getElementsByClassName("tax-info");
+    for(info of taxInfo){
+      if(info.style.display!='inline')
+      info.style.display="inline";
+      else info.style.display="none";
+    }
+    // console.log("clicked");
+  });
+</script>
